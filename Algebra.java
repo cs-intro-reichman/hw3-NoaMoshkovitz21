@@ -26,42 +26,141 @@ public class Algebra {
 	// Returns x1 + x2
 	public static int plus(int x1, int x2) {
 		// Replace the following statement with your code
-		return 0;
+		int res =  x1 ; 
+		for(int i=0 ; i<x2 ; i++){
+			res++;
+		}
+		return res;
 	}
 
 	// Returns x1 - x2
 	public static int minus(int x1, int x2) {
 		// Replace the following statement with your code
-		return 0;
+		int res = x1 ;
+		for(int i=0; i<x2 ; i++){
+			res--;
+		}
+		return res;
 	}
 
 	// Returns x1 * x2
 	public static int times(int x1, int x2) {
+		if(x1 == 0 || x2==0){
+			return 0;
+		}
+		int res = 0;
+		for(int i=0;i<x2;i++){
+			for(int j=0; j<x1; j++){
+				res++;
+			}
+		}
 		// Replace the following statement with your code
-		return 0;
+		return res;
 	}
 
 	// Returns x^n (for n >= 0)
 	public static int pow(int x, int n) {
+		if(n==0){
+			return 1;
+		}
+		if(n==1){
+			return x;
+		}
+		 
+		int result   = x; 
+		int next_power;
+		for(int i=0;i<n-1; i++){
+			next_power = 0;
+			for(int j=0; j < result ; j++){
+				for(int k=0 ; k< x ;k++){
+					
+					next_power++;
+				
+				}
+			}
+			//System.out.println("iteration n=" + (i+2) +"result="+temp_product);
+			result = next_power;
+		}
 		// Replace the following statement with your code
-		return 0;
+		return result;
 	}
 
 	// Returns the integer part of x1 / x2 
 	public static int div(int x1, int x2) {
+		if(x2 == 0){
+			return -1; 
+		}
+		if(x2 == 1){
+			return x1;
+		}
+		int div_result = 1;
+		int temp = x1;
+		boolean flag = true;
+		while(flag){
+			for(int i=0 ; i<x2 ; i++){
+				temp--;
+			
+			}
+			if(temp >= x2){
+				div_result++;
+			}
+			else{
+				flag = false;
+			}
+		}
 		// Replace the following statement with your code
-		return 0;
+		return div_result;
 	}
 
 	// Returns x1 % x2
 	public static int mod(int x1, int x2) {
 		// Replace the following statement with your code
-		return 0;
+		if(x2 == 0){
+			return -1; 
+		}
+		if(x2 == 1){
+			return 0;
+		}
+		if(x1<x2){
+			return x1;
+		}
+		int temp = x1;
+		boolean flag = true;
+		while(flag){
+			for(int i=0 ; i<x2 ; i++){
+				temp--;
+			
+			}
+			if(temp == x2){
+				return 0;
+		
+			}
+			if(temp<x2){
+				flag = false;
+
+			}
+		}
+		return temp;
 	}	
 
 	// Returns the integer part of sqrt(x) 
 	public static int sqrt(int x) {
+		int previous = 1 ;
+		for(int i=2 ; ;i++){
+			int current = pow(i,2);
+			if(x > previous && x < current){
+				return i-1;
+			}
+			if(x==current){
+				return i;
+			}
+			else{
+				previous = current ;
+			}
+			
+		}
+		
 		// Replace the following statement with your code
-		return 0;
+		
 	}	  	  
 }
