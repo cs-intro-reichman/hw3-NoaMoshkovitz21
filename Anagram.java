@@ -34,8 +34,8 @@ public class Anagram {
 		if(str1.length()!=str2.length()){
 			return false; 
 		}
-		//str1= preProcess(str1);
-		//str2= preProcess(str2);
+		str1= preProcess(str1);
+		str2= preProcess(str2);
 		boolean are_equal = true;
 		int len = str1.length();
 		boolean[] check = new boolean[str2.length()];
