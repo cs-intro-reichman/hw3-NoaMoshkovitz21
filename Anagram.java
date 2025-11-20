@@ -69,7 +69,7 @@ public class Anagram {
 				new_str = new_str + (char)(str.charAt(i)+32);
 			}
 			// check if character is lower case letter or space, if so we add it to new_str 
-			else if (str.charAt(i)>=97 && str.charAt(i)<=122||str.charAt(i) == 32){
+			else if (str.charAt(i)>=97 && str.charAt(i)<=122){
 				new_str = new_str + (char)(str.charAt(i));
 			}
 		
