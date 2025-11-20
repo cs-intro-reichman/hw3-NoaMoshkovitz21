@@ -81,6 +81,6 @@ public class LoanCalc {
 			iterationCounter++;
 
 		}
-		return b;
+		return (a+c)/2;
     }
 }
