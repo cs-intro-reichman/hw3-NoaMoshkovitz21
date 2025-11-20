@@ -67,16 +67,19 @@ public class LoanCalc {
 			c = c*2;
 		}	
 
-		double b = (a+c)/2;
-		while(Math.abs(endBalance(loan, rate, n, b))>Math.abs(epsilon)){
-			if(endBalance(loan, rate, n, b) > 0){
+		double b=(a+c)/2;
+		double f_b ;
+		while(Math.abs(c-a)>epsilon){
+			b = (a+c)/2;
+			f_b = Math.abs(endBalance(loan, rate, n, b));
+			if(f_b> 0){
 				a = b ; 
 			}
 			else{
 				c = b;
 			}
-			b = (a+c)/2 ;
 			iterationCounter++;
+
 		}
 		return b;
     }
