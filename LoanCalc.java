@@ -12,6 +12,7 @@ public class LoanCalc {
 		double loan = Double.parseDouble(args[0]);
 		double rate = Double.parseDouble(args[1]);
 		int n = Integer.parseInt(args[2]);
+		//System.out.println("End Balance" + endBalance(loan, rate, n, 10000));
 		System.out.println("Loan = " + loan + ", interest rate = " + rate + "%, periods = " + n);
 
 		// Computes the periodical payment using brute force search
@@ -29,7 +30,11 @@ public class LoanCalc {
 	// interest rate (as a percentage), the number of periods (n), and the periodical payment.
 	private static double endBalance(double loan, double rate, int n, double payment) {	
 		// Replace the following statement with your code
-		return 0;
+		double remaining_loan = loan ; 
+		for(int i=0 ; i < n ; i++){
+			remaining_loan = (remaining_loan-payment)*(rate+100)/100 ;
+		}
+		return remaining_loan;
 	}
 	
 	// Uses sequential search to compute an approximation of the periodical payment
@@ -39,7 +44,13 @@ public class LoanCalc {
 	// Side effect: modifies the class variable iterationCounter.
     public static double bruteForceSolver(double loan, double rate, int n, double epsilon) {
 		// Replace the following statement with your code
-		return 0;
+		iterationCounter = 0;
+		double g = loan / n ;
+		while ( endBalance(loan, rate, n, g)>epsilon){
+			g += epsilon;
+			iterationCounter++;
+		}
+		return g;
     }
     
     // Uses bisection search to compute an approximation of the periodical payment 
@@ -49,6 +60,24 @@ public class LoanCalc {
 	// Side effect: modifies the class variable iterationCounter.
     public static double bisectionSolver(double loan, double rate, int n, double epsilon) {  
         // Replace the following statement with your code
-		return 0;
+		double a  = loan / n; // positive balance
+		double c = loan;   // negative  balance
+		iterationCounter = 0;
+
+		double b=(a+c)/2;
+		double f_b ;
+		while(Math.abs(c-a)>epsilon){
+			b = (a+c)/2;
+			f_b = (endBalance(loan, rate, n, b));
+			if(f_b> 0){
+				a = b ; 
+			}
+			else{
+				c = b;
+			}
+			iterationCounter++;
+
+		}
+		return (a+c)/2;
     }
 }
