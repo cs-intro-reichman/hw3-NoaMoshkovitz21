@@ -61,17 +61,14 @@ public class LoanCalc {
     public static double bisectionSolver(double loan, double rate, int n, double epsilon) {  
         // Replace the following statement with your code
 		double a  = loan / n; // positive balance
-		double c = 2*(a);   // negative  balance
+		double c = loan;   // negative  balance
 		iterationCounter = 0;
-		while(endBalance(loan, rate, n, c)>0){
-			c = c*2;
-		}	
 
 		double b=(a+c)/2;
 		double f_b ;
 		while(Math.abs(c-a)>epsilon){
 			b = (a+c)/2;
-			f_b = Math.abs(endBalance(loan, rate, n, b));
+			f_b = (endBalance(loan, rate, n, b));
 			if(f_b> 0){
 				a = b ; 
 			}
